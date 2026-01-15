@@ -1,0 +1,194 @@
+/* =========================
+   CONTACTO - GENERAL
+========================= */
+
+.contact-card {
+    background-color: #F4F0E5; /* mismo color que el navbar */
+    border: none;
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 320px; /* Altura mínima uniforme */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Íconos de contacto */
+.contact-card i.bi-whatsapp {
+    color: #25D366;
+}
+
+.contact-card i.bi-instagram {
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-card i.bi-tiktok {
+    color: #00f2ea;
+}
+
+.contact-card i.bi-envelope {
+    color: #0d6efd;
+}
+
+/* Botones */
+.contact-card .btn-success {
+    background-color: #25D366;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 22px;
+    font-weight: 500;
+}
+
+.contact-card .btn-success:hover {
+    background-color: #1ebe5d;
+}
+
+.contact-card .btn-danger {
+    background-color: #E1306C;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 22px;
+    font-weight: 500;
+}
+
+.contact-card .btn-danger:hover {
+    background-color: #c91d5c;
+}
+
+.contact-card .btn-tiktok {
+    background-color: #00f2ea;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 22px;
+    font-weight: 500;
+    color: #000;
+}
+
+.contact-card .btn-tiktok:hover {
+    background-color: #00d4cc;
+    color: #000;
+}
+
+.contact-card .btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 22px;
+    font-weight: 500;
+}
+
+.contact-card .btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+/* Texto */
+.contact-card h5 {
+    margin-bottom: 8px;
+}
+
+.contact-card p {
+    color: #333;
+}
+
+.contact-card a {
+    color: #333;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: #555;
+}
+
+/* =========================
+   REDES SOCIALES (Footer)
+========================= */
+
+/* Quitar subrayado de los links */
+.social-icons a,
+.instagram,
+.tiktok,
+.whatsapp {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Hover Instagram */
+.instagram {
+    color: #333;
+}
+
+.instagram:hover {
+    color: #E1306C;
+    transform: scale(1.1);
+}
+
+/* Hover TikTok */
+.tiktok {
+    color: #333;
+}
+
+.tiktok:hover {
+    color: #00f2ea;
+    transform: scale(1.1);
+}
+
+/* Hover WhatsApp */
+.whatsapp {
+    color: #333;
+}
+
+.whatsapp:hover {
+    color: #25D366;
+    transform: scale(1.1);
+}
+
+/* =========================
+   VERSIÓN MÓVIL
+========================= */
+
+@media (max-width: 768px) {
+
+    main.container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .contact-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-card h5 {
+        font-size: 1.1rem;
+    }
+
+    .contact-card p {
+        font-size: 0.95rem;
+    }
+
+    /* Botón ocupa más espacio */
+    .contact-card .btn {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    /* Redes más grandes en móvil */
+    .instagram,
+    .tiktok,
+    .whatsapp {
+        font-size: 2rem;
+        margin: 0 12px;
+    }
+
+    /* Espaciado entre secciones */
+    .mb-5 {
+        margin-bottom: 3rem !important;
+    }
+}
