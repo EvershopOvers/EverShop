@@ -171,7 +171,7 @@ Imagen de referencia:
 ${image}
         `;
 
-        const phone = "595991211207";
+        const phone = "595981044294";
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     });
@@ -180,4 +180,5 @@ ${image}
 // Inicializar paginación al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     displayPage(1);
+
 });
