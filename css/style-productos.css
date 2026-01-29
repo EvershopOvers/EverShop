@@ -233,3 +233,31 @@
     }
 }
 
+/* Paginación - Mobile */
+@media (max-width: 768px) {
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .pagination .page-link {
+        padding: 6px 10px;
+        font-size: 12px;
+        margin: 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        padding: 0 10px;
+    }
+
+    .pagination {
+        max-width: 100%;
+    }
+}
+
