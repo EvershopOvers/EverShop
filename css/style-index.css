@@ -129,9 +129,11 @@ html {
 ======================= */
 
 .hero {
-    min-height: calc(100vh - 90px);
+    min-height: auto;
+    max-height: 85vh;
     margin-top: 90px;
     position: relative;
+    padding-bottom: 20px;
 }
 
 .hero::after {
@@ -149,9 +151,11 @@ html {
 #heroCarousel,
 .carousel-inner {
     height: 100%;
+    max-height: 500px;
 }
 
 .carousel-item {
+    position: relative;
     height: 100%;
 }
 
@@ -163,10 +167,58 @@ html {
     justify-content: center;
 }
 
+/* =======================
+   CAROUSEL CARD STYLE - MEJORADO
+======================= */
+
+.carousel-item {
+    padding: 10px 20px 60px;
+}
+
 .carousel-item img {
-    max-width: 80%;
-    max-height: 80%;
+    width: 100%;
+    max-width: 320px;
+    height: 380px;
     object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 
+        0 8px 30px rgba(0, 0, 0, 0.12),
+        0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+}
+
+.carousel-item.active img {
+    transform: scale(1);
+}
+
+.carousel-item img:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.15),
+        0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* =======================
+   CAROUSEL BADGE - POSICIONAMIENTO MEJORADO
+======================= */
+
+.carousel-badge {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: #F4F0E5;
+    padding: 6px 16px;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    border-radius: 999px;
+    font-weight: 500;
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* =======================
@@ -175,90 +227,103 @@ html {
 
 .hero-cta {
     position: absolute;
-    bottom: 22px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    z-index: 10;
 }
 
 .hero-cta p {
-    font-size: 14px;
-    color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+    font-size: 13px;
+    color: #333;
     font-weight: 500;
     line-height: 1.5;
+    margin-bottom: 8px;
 }
 
 .hero-cta .btn {
-    margin-top: 8px;
+    margin-top: 6px;
     background-color: rgba(0, 0, 0, 0.85);
     color: #f4f0e5;
     border: none;
-    font-size: 14px;
+    font-size: 13px;
     padding: 7px 16px;
-    border-radius: 20px;
+    border-radius: 25px;
     letter-spacing: 0.4px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .hero-cta .btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.95);
 }
 
 /* =======================
-   HERO MOBILE - CORREGIDO
+   HERO MOBILE - OPTIMIZADO
 ======================= */
 
 @media (max-width: 768px) {
     .hero {
-        /* REDUCIDO: menos altura total */
         min-height: auto;
-        margin-top: 70px; /* reducido de 80px */
-        padding-bottom: 20px; /* espacio inferior controlado */
+        margin-top: 70px;
+        padding-bottom: 20px;
     }
 
-    /* NUEVO: contenedor del carousel más compacto */
     .hero .container-fluid {
         padding: 0.5rem !important;
     }
 
-    /* NUEVO: títulos móviles más compactos */
     .mobile-title {
         padding-top: 1.5rem !important;
         padding-bottom: 0.8rem !important;
         margin: 0;
     }
 
-    /* NUEVO: slogan más compacto */
     .col-12.d-block.d-md-none.text-center.py-4 {
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
     }
 
-    /* Carousel ajustado */
     #heroCarousel {
-        min-height: 400px; /* NUEVO: altura mínima fija */
-        max-height: 50vh; /* NUEVO: máximo basado en viewport */
+        min-height: 400px;
+        max-height: 55vh;
+    }
+
+    .carousel-item {
+        padding: 15px 15px 70px;
+        padding-top: 45px;
     }
 
     .carousel-item img {
-        max-width: 90%;
-        max-height: 90%;
+        max-width: 100%;
+        height: 380px;
+        border-radius: 14px;
+        padding: 12px;
+    }
+
+    /* Badge mobile mejorado - posicionado arriba sin tapar imagen */
+    .carousel-badge {
+        top: 10px;
+        font-size: 11px;
+        padding: 5px 14px;
+        background: rgba(0, 0, 0, 0.90);
     }
 
     .hero-cta {
-        bottom: 14px;
+        bottom: 18px;
     }
 
     .hero-cta p {
         font-size: 13px;
+        color: #333;
     }
 
     .hero-cta .btn {
         font-size: 13px;
-        padding: 5px 12px;
+        padding: 6px 14px;
     }
 
     .hero-cta .btn:active {
@@ -279,7 +344,7 @@ html {
 
 .brand-title {
     margin: 0;
-    font-size: 48px;
+    font-size: 42px;
     letter-spacing: 2px;
 }
 
@@ -294,7 +359,7 @@ html {
 }
 
 .hero-slogan {
-    font-size: 16px;
+    font-size: 15px;
     color: #555;
     line-height: 1.5;
 }
@@ -303,6 +368,36 @@ html {
     font-style: italic;
     font-weight: 300;
     opacity: 0.85;
+}
+
+.welcome-badge {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.08);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    letter-spacing: 0.5px;
+}
+
+.hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #555;
+}
+
+.feature-item i {
+    color: #000;
+    font-size: 18px;
 }
 
 @media (max-width: 768px) {
@@ -320,7 +415,7 @@ html {
     }
 
     .hero-slogan {
-        font-size: 15px; /* NUEVO: ligeramente reducido */
+        font-size: 15px;
     }
 }
 
@@ -399,5 +494,258 @@ footer li {
 
     footer ul {
         padding: 0;
+    }
+}
+
+/* =======================
+   TRANSICIONES SUAVES
+======================= */
+
+.carousel-item {
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+/* =======================
+   INDICADORES PERSONALIZADOS
+======================= */
+
+.carousel-indicators {
+    bottom: 10px;
+    z-index: 10;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.25);
+    border: none;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    background-color: rgba(0,0,0,0.85);
+    transform: scale(1.2);
+}
+
+/* =======================
+   CONTROLES DEL CAROUSEL
+======================= */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+    opacity: 0.75;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* =======================
+   ANIMACIÓN CTA
+======================= */
+
+.hero-cta {
+    animation: fadeUpCTA 0.8s ease forwards;
+}
+
+@keyframes fadeUpCTA {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 12px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* =======================
+   SOMBRA SUTIL HERO
+======================= */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(0,0,0,0.03),
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+#heroCarousel {
+    position: relative;
+    z-index: 2;
+}
+
+/* =======================
+   BENEFITS SECTION
+======================= */
+
+.benefits {
+    background-color: #F4F0E5;
+}
+
+.benefit-card {
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.benefit-card h5 {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.benefit-card p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* =======================
+   FEATURED PRODUCTS
+======================= */
+
+.featured-products {
+    background-color: #F4F0E5;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 16px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background-color: rgba(244, 240, 229, 0.3);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+    padding: 10px;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.08);
+}
+
+.product-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-info h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    color: #666;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* =======================
+   CTA SECTION
+======================= */
+
+.cta-section {
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+    color: #fff;
+}
+
+.cta-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.cta-text {
+    color: #e0e0e0;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* =======================
+   RESPONSIVE ADJUSTMENTS
+======================= */
+
+@media (max-width: 576px) {
+    .carousel-indicators {
+        bottom: 8px;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        width: 6px;
+        height: 6px;
+        margin: 0 4px;
     }
 }
