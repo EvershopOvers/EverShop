@@ -1,126 +1,45 @@
 /* =======================
-   BASE
+   BASE — ESPECÍFICO INDEX
+   (overflow-x y padding-top son necesarios
+    solo en esta página)
 ======================= */
 
 body {
-    background-color: #F4F0E5;
+    /* padding-top viene de style.css (90px) — aquí solo se añade overflow-x */
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 html {
-    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-/* =======================
-   NAVBAR
-======================= */
-
-.navbar {
-    background-color: #F4F0E5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
+.container,
+.container-fluid {
+    overflow-x: hidden;
 }
 
-.navbar .nav-link,
-.navbar .navbar-brand {
-    color: #333;
-    transition: color 0.3s ease,
-                text-shadow 0.3s ease,
-                transform 0.3s ease,
-                background-color 0.3s ease,
-                box-shadow 0.3s ease;
+/* Reset de márgenes del row para evitar scroll horizontal */
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
-.navbar .nav-link {
-    padding: 8px 14px;
-    border-radius: 10px;
-}
-
-.navbar .nav-link:hover {
-    color: #000;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-    transform: translateY(-1px);
-    background-color: #e6dfcf;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
-}
-
-.navbar .nav-link.active {
-    background-color: #e6dfcf;
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
-    font-weight: 500;
-}
-
-.navbar-brand {
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-weight: 600;
-}
-
-.navbar-brand img {
-    display: block;
-    max-height: 50px;
-}
-
-.navbar-toggler {
-    border: none;
-    padding: 6px 10px;
-    font-size: 18px;
-    color: #333;
-}
-
-.navbar-toggler:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-/* =======================
-   NAVBAR MOBILE
-======================= */
-
-@media (max-width: 768px) {
-    .navbar-collapse {
-        background-color: #F4F0E5;
-        margin-top: 10px;
-        padding: 12px;
-        border-radius: 14px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-    }
-
-    .navbar-nav {
-        gap: 6px;
-    }
-
-    .navbar .nav-link {
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .navbar .nav-link:active {
-        transform: scale(0.96);
-    }
-}
-
-/* =======================
-   BOTÓN WHATSAPP
-======================= */
-
-.btn-success {
-    background-color: #4be37a;
-    border-color: #4be37a;
-}
-
-.btn-success:hover {
-    background-color: #3fd46d;
-    border-color: #3fd46d;
-}
-
-.btn-success:focus {
-    box-shadow: 0 0 0 0.2rem rgba(75, 227, 122, 0.5);
+/* Columnas sin desbordamiento */
+[class*="col-"] {
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 @media (max-width: 768px) {
-    .btn-success.position-fixed {
-        bottom: 16px !important;
-        right: 16px !important;
+    main.container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .row.g-4 {
+        --bs-gutter-x: 0.5rem;
     }
 }
 
@@ -131,7 +50,7 @@ html {
 .hero {
     min-height: auto;
     max-height: 85vh;
-    margin-top: 90px;
+    margin-top: 0;
     position: relative;
     padding-bottom: 20px;
 }
@@ -168,7 +87,7 @@ html {
 }
 
 /* =======================
-   CAROUSEL CARD STYLE - MEJORADO
+   CAROUSEL CARD STYLE
 ======================= */
 
 .carousel-item {
@@ -201,7 +120,7 @@ html {
 }
 
 /* =======================
-   CAROUSEL BADGE - POSICIONAMIENTO MEJORADO
+   CAROUSEL BADGE
 ======================= */
 
 .carousel-badge {
@@ -262,13 +181,13 @@ html {
 }
 
 /* =======================
-   HERO MOBILE - OPTIMIZADO
+   HERO MOBILE
 ======================= */
 
 @media (max-width: 768px) {
     .hero {
         min-height: auto;
-        margin-top: 70px;
+        margin-top: 0;
         padding-bottom: 20px;
     }
 
@@ -304,7 +223,6 @@ html {
         padding: 12px;
     }
 
-    /* Badge mobile mejorado - posicionado arriba sin tapar imagen */
     .carousel-badge {
         top: 10px;
         font-size: 11px;
@@ -332,7 +250,7 @@ html {
 }
 
 /* =======================
-   TEXTOS
+   TEXTOS HERO
 ======================= */
 
 .welcome-title {
@@ -420,85 +338,7 @@ html {
 }
 
 /* =======================
-   FOOTER ESTILO NAVBAR
-======================= */
-
-footer {
-    background-color: #F4F0E5;
-    color: #333;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.08);
-}
-
-footer a {
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-footer ul a:hover {
-    color: #000;
-}
-
-footer .bi {
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-footer a:hover .bi {
-    transform: scale(1.15);
-}
-
-footer .social-icons a {
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-footer .social-icons a.instagram:hover {
-    color: #cd1854;
-}
-
-footer .social-icons a.tiktok:hover {
-    color: #00f2ea;
-}
-
-footer .social-icons a.whatsapp:hover {
-    color: #25D366;
-}
-
-footer .social-icons a:hover {
-    transform: scale(1.15);
-}
-
-footer h5 {
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-
-footer p,
-footer small,
-footer li {
-    color: #555;
-}
-
-@media (max-width: 768px) {
-    footer {
-        text-align: center;
-    }
-
-    footer .col-md-4 {
-        margin-bottom: 20px;
-    }
-
-    footer img {
-        margin: 0 auto;
-        display: block;
-    }
-
-    footer ul {
-        padding: 0;
-    }
-}
-
-/* =======================
-   TRANSICIONES SUAVES
+   TRANSICIONES CAROUSEL
 ======================= */
 
 .carousel-item {
@@ -506,7 +346,7 @@ footer li {
 }
 
 /* =======================
-   INDICADORES PERSONALIZADOS
+   INDICADORES
 ======================= */
 
 .carousel-indicators {
@@ -530,7 +370,7 @@ footer li {
 }
 
 /* =======================
-   CONTROLES DEL CAROUSEL
+   CONTROLES CAROUSEL
 ======================= */
 
 .carousel-control-prev-icon,
@@ -566,7 +406,7 @@ footer li {
 }
 
 /* =======================
-   SOMBRA SUTIL HERO
+   SOMBRA HERO
 ======================= */
 
 .hero::before {
@@ -735,7 +575,7 @@ footer li {
 }
 
 /* =======================
-   RESPONSIVE ADJUSTMENTS
+   RESPONSIVE AJUSTES
 ======================= */
 
 @media (max-width: 576px) {
