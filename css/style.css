@@ -4,67 +4,41 @@
 
 body {
     background-color: #F4F0E5;
+    /* Compensación global para el navbar fixed-top (~90px de altura) */
     padding-top: 90px;
-     max-width: 100%;  /* Evita el scroll horizontal */
-    overflow-x: hidden; /* Evita el scroll horizontal */
 }
 
 html {
-    scroll-behavior: smooth; 
-    max-width: 100%;   /* Evita el scroll horizontal */
-    overflow-x: hidden; /* Evita el scroll horizontal */
+    scroll-behavior: smooth;
 }
 
-.container, .container-fluid {
-    overflow-x: hidden;
-}
-
-/* Ajustar el row que puede causar el desbordamiento */
-.row {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-/* Asegurar que las columnas no se salgan */
-[class*="col-"] {
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-@media (max-width: 768px) {
-    main.container {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    
-    .row.g-4 {
-        --bs-gutter-x: 0.5rem; /* Reduce el espacio entre productos */
+/* En mobile el navbar puede ser un poco menor */
+@media (max-width: 991px) {
+    body {
+        padding-top: 75px;
     }
 }
-/* NUEVO: scroll suave 
-main {
-    padding-top: 120px;
-    outline: 2px solid red;
-}
-*/
+
 /* =======================
    NAVBAR
 ======================= */
-@media (max-width: 768px) {
-    body {
-        padding-top: 100px;
-    }
-}
 
 .navbar {
     background-color: #F4F0E5;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
+    /* Permite que el navbar crezca verticalmente en mobile */
+    align-items: flex-start;
+}
+
+.navbar .container-fluid {
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .navbar .nav-link,
 .navbar .navbar-brand {
-    color: #333; /* AJUSTE: mejor contraste */
+    color: #333;
     transition: color 0.3s ease,
                 text-shadow 0.3s ease,
                 transform 0.3s ease,
@@ -85,7 +59,6 @@ main {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
-/* NUEVO: link activo */
 .navbar .nav-link.active {
     background-color: #e6dfcf;
     box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
@@ -103,41 +76,127 @@ main {
     max-height: 50px;
 }
 
-.navbar-toggler {
+/* =======================
+   BOTÓN HAMBURGUESA CUSTOM
+======================= */
+
+.custom-toggler {
     border: none;
     padding: 6px 10px;
-    font-size: 18px;
-    color: #333;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
 }
 
-.navbar-toggler:focus {
+.custom-toggler:focus {
     outline: none;
     box-shadow: none;
 }
 
+/* Las tres barras */
+.toggler-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: transform 0.35s ease, opacity 0.25s ease, width 0.3s ease;
+    transform-origin: center;
+}
+
+/* Estado abierto (X): se aplica cuando el nav tiene clase "is-open" */
+.custom-toggler.is-open .toggler-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.custom-toggler.is-open .toggler-bar:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+
+.custom-toggler.is-open .toggler-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 /* =======================
-   NAVBAR MOBILE
+   NAVBAR COLLAPSE (desktop)
 ======================= */
 
-@media (max-width: 768px) {
+/* En desktop el collapse se comporta normalmente */
+@media (min-width: 992px) {
     .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+}
+
+/* =======================
+   NAVBAR MOBILE — EXPANSIÓN INTEGRADA
+======================= */
+
+@media (max-width: 991px) {
+
+    /* El navbar ocupa todo el ancho y crece hacia abajo */
+    .navbar {
+        padding: 10px 0 0;
+    }
+
+    /* La fila logo + botón tiene su propio padding inferior */
+    .navbar .container-fluid {
+        padding-bottom: 10px;
+    }
+
+    /* El collapse ocupa todo el ancho del navbar */
+    .navbar-collapse {
+        width: 100%;
+        flex-basis: 100%;
+
+        /* Animación de altura: empieza en 0 y se expande */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.3s ease;
+
+        /* Mismo fondo que el navbar — sin borde ni sombra separada */
         background-color: #F4F0E5;
-        margin-top: 10px;
-        padding: 12px;
-        border-radius: 14px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        padding: 0 16px;
+
+        /* Elimina los estilos de tarjeta flotante */
+        border-radius: 0;
+        box-shadow: none;
+        margin-top: 0;
+    }
+
+    /* Estado abierto: se expande */
+    .navbar-collapse.menu-open {
+        max-height: 400px;
+        padding: 12px 16px 16px;
+    }
+
+    /* Separador visual sutil entre la barra y el menú */
+    .navbar-collapse.menu-open::before {
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.08);
+        margin-bottom: 10px;
     }
 
     .navbar-nav {
-        gap: 6px;
+        flex-direction: column;
+        gap: 4px;
     }
 
     .navbar .nav-link {
         text-align: center;
         font-size: 16px;
+        padding: 10px 14px;
     }
 
-    /* NUEVO: feedback táctil */
     .navbar .nav-link:active {
         transform: scale(0.96);
     }
@@ -168,25 +227,19 @@ main {
     }
 }
 
-
 /* =======================
-   FOOTER MOBILE
-======================= */
-
-
-/* =======================
-   FOOTER ESTILO NAVBAR
+   FOOTER
 ======================= */
 
 footer {
-    background-color: #F4F0E5;/* mismo color que el navbar */
+    background-color: #F4F0E5;
     color: #333;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.08); /* sombra superior */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.08);
 }
 
 footer a {
     color: #333;
-    text-decoration: none; /* ← esto quita las rayas */
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
@@ -202,27 +255,22 @@ footer a:hover .bi {
     transform: scale(1.15);
 }
 
-/* Transición general */
 footer .social-icons a {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Instagram: naranja + rojo */
 footer .social-icons a.instagram:hover {
-    color: #cd1854; /* rosa/rojo Instagram */
+    color: #cd1854;
 }
 
-/* TikTok: negro con azul */
 footer .social-icons a.tiktok:hover {
-    color: #00f2ea; /* azul TikTok */
+    color: #00f2ea;
 }
 
-/* WhatsApp */
 footer .social-icons a.whatsapp:hover {
     color: #25D366;
 }
 
-/* Zoom suave */
 footer .social-icons a:hover {
     transform: scale(1.15);
 }
@@ -256,5 +304,3 @@ footer li {
         padding: 0;
     }
 }
-
-
