@@ -47,12 +47,15 @@ html {
    HERO
 ======================= */
 
+/* Reemplazá el bloque .hero actual por este */
 .hero {
-    min-height: auto;
-    max-height: 85vh;
+    min-height: calc(100vh - 90px); /* ocupa todo el viewport menos el navbar */
+    max-height: none;
     margin-top: 0;
     position: relative;
     padding-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .hero::after {
