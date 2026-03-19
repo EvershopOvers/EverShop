@@ -4,7 +4,6 @@
 
 body {
     background-color: #F4F0E5;
-    /* Compensación global para el navbar fixed-top (~90px de altura) */
     padding-top: 90px;
 }
 
@@ -12,7 +11,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* En mobile el navbar puede ser un poco menor */
 @media (max-width: 991px) {
     body {
         padding-top: 75px;
@@ -27,7 +25,6 @@ html {
     background-color: #F4F0E5;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
-    /* Permite que el navbar crezca verticalmente en mobile */
     align-items: flex-start;
 }
 
@@ -98,18 +95,17 @@ html {
     box-shadow: none;
 }
 
-/* Las tres barras */
 .toggler-bar {
     display: block;
     width: 22px;
     height: 2px;
     background-color: #333;
     border-radius: 2px;
-    transition: transform 0.35s ease, opacity 0.25s ease, width 0.3s ease;
+    /* Reducido a 0.2s para una animación más rápida */
+    transition: transform 0.2s ease, opacity 0.15s ease, width 0.2s ease;
     transform-origin: center;
 }
 
-/* Estado abierto (X): se aplica cuando el nav tiene clase "is-open" */
 .custom-toggler.is-open .toggler-bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -127,7 +123,6 @@ html {
    NAVBAR COLLAPSE (desktop)
 ======================= */
 
-/* En desktop el collapse se comporta normalmente */
 @media (min-width: 992px) {
     .navbar-collapse {
         display: flex !important;
@@ -141,43 +136,33 @@ html {
 
 @media (max-width: 991px) {
 
-    /* El navbar ocupa todo el ancho y crece hacia abajo */
     .navbar {
         padding: 10px 0 0;
     }
 
-    /* La fila logo + botón tiene su propio padding inferior */
     .navbar .container-fluid {
         padding-bottom: 10px;
     }
 
-    /* El collapse ocupa todo el ancho del navbar */
     .navbar-collapse {
         width: 100%;
         flex-basis: 100%;
-
-        /* Animación de altura: empieza en 0 y se expande */
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.35s ease, padding 0.3s ease;
-
-        /* Mismo fondo que el navbar — sin borde ni sombra separada */
+        /* Reducido a 0.2s para que sea más rápido */
+        transition: max-height 0.2s ease, padding 0.2s ease;
         background-color: #F4F0E5;
         padding: 0 16px;
-
-        /* Elimina los estilos de tarjeta flotante */
         border-radius: 0;
         box-shadow: none;
         margin-top: 0;
     }
 
-    /* Estado abierto: se expande */
     .navbar-collapse.menu-open {
         max-height: 400px;
         padding: 12px 16px 16px;
     }
 
-    /* Separador visual sutil entre la barra y el menú */
     .navbar-collapse.menu-open::before {
         content: "";
         display: block;
@@ -303,4 +288,8 @@ footer li {
     footer ul {
         padding: 0;
     }
+}
+
+body.menu-open {
+    padding-top: 75px;
 }
