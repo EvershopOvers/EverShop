@@ -1,0 +1,13 @@
+# robots.txt — EverShop
+# https://evershop.com.py/
+
+User-agent: *
+Allow: /
+
+# Bloquear archivos innecesarios para indexación
+Disallow: /css/
+Disallow: /js/
+Disallow: /img/
+
+# Sitemap
+Sitemap: https://evershop.com.py/sitemap.xml
