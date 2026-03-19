@@ -14,8 +14,9 @@
 
         var toggler = document.getElementById('menuToggle');
         var menu    = document.getElementById('navbarNavDropdown');
+        var navbar  = toggler ? toggler.closest('.navbar') : null;
 
-        if (!toggler || !menu) return;
+        if (!toggler || !menu || !navbar) return;
 
         /**
          * Abre o cierra el menú según su estado actual.
@@ -34,7 +35,6 @@
          * Cierra el menú si el usuario hace clic fuera del navbar.
          */
         document.addEventListener('click', function (e) {
-            var navbar = toggler.closest('.navbar');
             if (navbar && !navbar.contains(e.target)) {
                 closeMenu();
             }
@@ -58,6 +58,12 @@
             toggler.classList.add('is-open');
             toggler.setAttribute('aria-expanded', 'true');
             toggler.setAttribute('aria-label', 'Cerrar menú');
+
+            // Reducido a 200ms para coincidir con la transición CSS
+            setTimeout(function () {
+                var navbarHeight = navbar.offsetHeight;
+                document.body.style.paddingTop = navbarHeight + 'px';
+            }, 200);
         }
 
         function closeMenu() {
@@ -65,6 +71,9 @@
             toggler.classList.remove('is-open');
             toggler.setAttribute('aria-expanded', 'false');
             toggler.setAttribute('aria-label', 'Abrir menú');
+
+            // Restauramos el padding-top original de mobile (75px)
+            document.body.style.paddingTop = '75px';
         }
     });
 
