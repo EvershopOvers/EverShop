@@ -13,8 +13,8 @@
     document.addEventListener('DOMContentLoaded', function () {
 
         var toggler = document.getElementById('menuToggle');
-        var menu    = document.getElementById('navbarNavDropdown');
-        var navbar  = toggler ? toggler.closest('.navbar') : null;
+        var menu = document.getElementById('navbarNavDropdown');
+        var navbar = toggler ? toggler.closest('.navbar') : null;
 
         if (!toggler || !menu || !navbar) return;
 
@@ -63,7 +63,7 @@
             setTimeout(function () {
                 var navbarHeight = navbar.offsetHeight;
                 document.body.style.paddingTop = navbarHeight + 'px';
-            }, 200);
+            }, 150);
         }
 
         function closeMenu() {
@@ -72,8 +72,8 @@
             toggler.setAttribute('aria-expanded', 'false');
             toggler.setAttribute('aria-label', 'Abrir menú');
 
-            // Restauramos el padding-top original de mobile (75px)
-            document.body.style.paddingTop = '75px';
+            // Restaurar el padding según el tamaño real de pantalla
+            document.body.style.paddingTop = '';
         }
     });
 
